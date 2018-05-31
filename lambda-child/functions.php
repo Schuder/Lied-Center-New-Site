@@ -1,4 +1,4 @@
-''<?php
+<?php
 /**
  * Child Theme functions loads the main theme class and extra options
  *
@@ -144,7 +144,6 @@ add_action( 'widgets_init', 'register_widgets_lied' );
 add_theme_support( 'post-thumbnails' );
 add_image_size( 'event-gallery', 300, 200, true );
 
-
 add_filter( 'image_size_names_choose', 'custom_image_sizes' );
  
 function custom_image_sizes( $sizes ) {
@@ -171,8 +170,11 @@ function customFormatGallery($string,$attr){
     }
 
     $output .= "</div>";**/
+    
+    /** Make both thumbnail and full size image embed in page, display none on the fullsize and make it so on hover the thumnbnail dissappears and the fullsize appears with transition**/
 
     return $output;
+    
 }
 
 /**

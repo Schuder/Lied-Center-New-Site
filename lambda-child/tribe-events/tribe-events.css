@@ -102,6 +102,11 @@
 	
 }
 
+.tribe-events-content div .list-container {
+  margin-left: -5px;
+  margin-right: -5px;
+}
+
 .tribe-events-title {
   padding-bottom: 12px !important;
   border-bottom: 1px #e8e8e8 solid;
