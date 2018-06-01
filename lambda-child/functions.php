@@ -33,6 +33,7 @@ function oxy_load_child_scripts() {
 */
 function add_meta_boxes_lied_events($post) {
 	add_meta_box( 'meta_box_event_slider', __( 'Revolution Slider', 'lied_events' ), 'build_meta_box_event_slider', 'tribe_events', 'side', 'low' );
+	add_meta_box( 'meta_box_event_secondary_bar', __( 'Secondary Bar', 'lied_events2' ), 'build_meta_box_secondary_bar', 'tribe_events', 'normal', 'low' );
 }
 
 function build_meta_box_event_slider($post){
@@ -58,15 +59,29 @@ function build_meta_box_event_slider($post){
 		echo '</select>';
 	}
 	
-/*	?>
-		<div class='inside'>
-			<h3><?php _e( 'Revolution Slider', 'lied_events' ); ?></h3>
-			<p>
-				<input type="text" name="event_slider" value="<?php echo $current_event_slider; ?>" />
-			</p>
-		</div>
-	<?php
-*/
+}
+
+function build_meta_box_secondary_bar($post){
+	wp_nonce_field( basename( __FILE__ ), 'meta_box_nonce_secondary_bar' );
+	
+	$current_left_title = get_post_meta( $post->ID, '_left_title', true );
+	$current_left_url = get_post_meta( $post->ID, '_left_url', true );
+	$current_right_title = get_post_meta( $post->ID, '_right_title', true );
+	$current_right_url = get_post_meta( $post->ID, '_right_url', true );
+	
+	echo "<div style='width: 25%; float: left;'><label>Left Title</label></div>";
+	echo "<div style='width: 75%;'><input type='text' name='left_title' value='".$current_left_title."'/></div>";
+	
+	echo "<div style='width: 25%; float: left;'><label>Left URL</label></div>";
+	echo "<div style='width: 75%;'><input type='text' name='left_url' value='".$current_left_url."'/></div>";
+	
+	echo "<div style='width: 25%; float: left;'><label>Right Title</label></div>";
+	echo "<div style='width: 75%;'><input type='text' name='right_title' value='".$current_right_title."'/></div>";
+	
+	echo "<div style='width: 25%; float: left;'><label>Right URL</label></div>";
+	echo "<div style='width: 75%;'><input type='text' name='right_url' value='".$current_right_url."'/></div>";
+
+	
 }
 
 function save_meta_boxes_event_slider ($post_id) {
@@ -89,9 +104,42 @@ function save_meta_boxes_event_slider ($post_id) {
 	
 }
 
+function save_meta_boxes_secondary_bar ($post_id) {
+
+	if ( !isset( $_POST['meta_box_nonce_secondary_bar'] ) || !wp_verify_nonce( $_POST['meta_box_nonce_secondary_bar'], basename( __FILE__ ) ) ){
+		return;
+	}
+
+	if ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE ){
+		return;
+	}
+	
+	if ( ! current_user_can( 'edit_post', $post_id ) ){
+		return;
+	}
+	
+	if ( isset( $_REQUEST['left_title'] ) ) {
+		update_post_meta( $post_id, '_left_title', sanitize_text_field( $_POST['left_title'] ) );
+	}
+	
+	if ( isset( $_REQUEST['left_url'] ) ) {
+		update_post_meta( $post_id, '_left_url', sanitize_text_field( $_POST['left_url'] ) );
+	}
+	
+	if ( isset( $_REQUEST['right_title'] ) ) {
+		update_post_meta( $post_id, '_right_title', sanitize_text_field( $_POST['right_title'] ) );
+	}
+	
+	if ( isset( $_REQUEST['right_url'] ) ) {
+		update_post_meta( $post_id, '_right_url', sanitize_text_field( $_POST['right_url'] ) );
+	}
+	
+}
+
 add_action( 'wp_enqueue_scripts', 'oxy_load_child_scripts');
 add_action( 'add_meta_boxes', 'add_meta_boxes_lied_events' );
 add_action( 'save_post', 'save_meta_boxes_event_slider');
+add_action( 'save_post', 'save_meta_boxes_secondary_bar');
 
 
 
