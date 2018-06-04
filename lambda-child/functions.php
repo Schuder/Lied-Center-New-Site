@@ -69,16 +69,16 @@ function build_meta_box_secondary_bar($post){
 	$current_right_title = get_post_meta( $post->ID, '_right_title', true );
 	$current_right_url = get_post_meta( $post->ID, '_right_url', true );
 	
-	echo "<div style='width: 25%; float: left;'><label>Left Title</label></div>";
+	echo "<div style='width: 25%; float: left;'><label>Left Title: </label></div>";
 	echo "<div style='width: 75%;'><input type='text' name='left_title' value='".$current_left_title."'/></div>";
 	
-	echo "<div style='width: 25%; float: left;'><label>Left URL</label></div>";
+	echo "<div style='width: 25%; float: left;'><label>Left URL: </label></div>";
 	echo "<div style='width: 75%;'><input type='text' name='left_url' value='".$current_left_url."'/></div>";
 	
-	echo "<div style='width: 25%; float: left;'><label>Right Title</label></div>";
+	echo "<div style='width: 25%; float: left;'><label>Right Title: </label></div>";
 	echo "<div style='width: 75%;'><input type='text' name='right_title' value='".$current_right_title."'/></div>";
 	
-	echo "<div style='width: 25%; float: left;'><label>Right URL</label></div>";
+	echo "<div style='width: 25%; float: left;'><label>Right URL: </label></div>";
 	echo "<div style='width: 75%;'><input type='text' name='right_url' value='".$current_right_url."'/></div>";
 
 	
