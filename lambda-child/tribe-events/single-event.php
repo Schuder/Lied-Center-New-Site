@@ -48,7 +48,14 @@ if ($start_datetime < $now) {
 ?>
 <?php putRevSlider($event_slider) ?>
 <div class="tribe-events-secondary-bar">
-	
+	<div class="row">
+		<div class="col-md-12">
+			<a href="<?php esc_html_e($left_url) ?>" class="">
+				<h1><?php esc_html_e($left_title) ?></h1>
+			</a>
+			<a href="<?php esc_html_e($right_url) ?>" class="btn btn-primary btn-normal"><?php esc_html_e($right_title) ?></a>
+		</div>
+	</div>
 </div>
 <?php do_action( 'tribe_events_single_event_before_the_meta' ) ?>
 <?php tribe_get_template_part( 'modules/meta' ); ?>

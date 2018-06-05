@@ -51,7 +51,7 @@
 	padding-left: 15px;
 }
 
-.tribe-events-content .one_third .btn-primary {
+.tribe-events-content .one_third .btn-primary, .tribe-events-secondary-bar .btn-primary {
   font-family: 'Roboto', sans-serif;
   font-weight: 700;
   font-style: normal;
@@ -65,9 +65,24 @@
   margin-left: 22px;
 }
 
-.tribe-events-content .one_third .btn-primary:hover {
+.tribe-events-content .one_third .btn-primary:hover, .tribe-events-secondary-bar .btn-primary:hover {
   color: white !important;
 }
+
+.tribe-events-secondary-bar h1 {
+	font-size: 1.8em;
+    display: inline;
+}
+
+.tribe-events-secondary-bar .btn-primary {
+	float: right;
+}
+
+.tribe-events-secondary-bar .col-md-12 {
+	padding-right: 0px;
+	padding-top: 15px;
+}
+
 
 .tribe-events-content .one_third .btn-default {
   font-family: 'Roboto', sans-serif;
