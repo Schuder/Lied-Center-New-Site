@@ -64,10 +64,19 @@ function build_meta_box_event_slider($post){
 function build_meta_box_secondary_bar($post){
 	wp_nonce_field( basename( __FILE__ ), 'meta_box_nonce_secondary_bar' );
 	
+	$current_is_bar_enabled = get_post_meta( $post->ID, '_is_bar_enabled', true );
 	$current_left_title = get_post_meta( $post->ID, '_left_title', true );
 	$current_left_url = get_post_meta( $post->ID, '_left_url', true );
 	$current_right_title = get_post_meta( $post->ID, '_right_title', true );
 	$current_right_url = get_post_meta( $post->ID, '_right_url', true );
+	$checked = '';
+	
+	if ($current_is_bar_enabled=='on') {
+	  $checked='checked';
+	}
+	
+	echo "<div style='width: 25%; float: left;'><label>Enabled: </label></div>";
+	echo "<div style='width: 75%; margin-bottom: 6px;'><input type='checkbox' name='is_bar_enabled' ".$checked."/></div>";
 	
 	echo "<div style='width: 25%; float: left;'><label>Left Title: </label></div>";
 	echo "<div style='width: 75%;'><input type='text' name='left_title' value='".$current_left_title."'/></div>";
@@ -81,7 +90,6 @@ function build_meta_box_secondary_bar($post){
 	echo "<div style='width: 25%; float: left;'><label>Right URL: </label></div>";
 	echo "<div style='width: 75%;'><input type='text' name='right_url' value='".$current_right_url."'/></div>";
 
-	
 }
 
 function save_meta_boxes_event_slider ($post_id) {
@@ -116,6 +124,13 @@ function save_meta_boxes_secondary_bar ($post_id) {
 	
 	if ( ! current_user_can( 'edit_post', $post_id ) ){
 		return;
+	}
+	
+	if ( isset( $_REQUEST['is_bar_enabled'] ) ) {
+		update_post_meta( $post_id, '_is_bar_enabled', 'on' );
+	}
+	else {
+	  update_post_meta( $post_id, '_is_bar_enabled', 'off' );
 	}
 	
 	if ( isset( $_REQUEST['left_title'] ) ) {

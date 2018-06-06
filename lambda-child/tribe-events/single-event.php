@@ -20,6 +20,8 @@ $events_label_plural   = tribe_get_event_label_plural();
 
 $event_id = get_the_ID();
 $event_slider = get_post_meta($event_id, _event_slider, true);
+$is_bar_enabled = get_post_meta($event_id, _is_bar_enabled, true);
+$left_title = get_post_meta($event_id, _left_title, true);
 $left_title = get_post_meta($event_id, _left_title, true);
 $left_url = get_post_meta($event_id, _left_url, true);
 $right_title = get_post_meta($event_id, _right_title, true);
@@ -44,9 +46,9 @@ if ($start_datetime < $now) {
 	$is_past_event = true;
 }
 
-
 ?>
 <?php putRevSlider($event_slider) ?>
+<?php if($is_bar_enabled=="on") { ?>
 <div class="tribe-events-secondary-bar">
 	<div class="row">
 		<div class="col-md-12">
@@ -57,6 +59,7 @@ if ($start_datetime < $now) {
 		</div>
 	</div>
 </div>
+<?php } ?>
 <?php do_action( 'tribe_events_single_event_before_the_meta' ) ?>
 <?php tribe_get_template_part( 'modules/meta' ); ?>
 <?php do_action( 'tribe_events_single_event_after_the_meta' ) ?>

@@ -49,6 +49,7 @@
 .tribe-events-content .one_third ul {
 	padding-top: 15px;
 	padding-left: 15px;
+	list-style-type: none;
 }
 
 .tribe-events-content .one_third .btn-primary, .tribe-events-secondary-bar .btn-primary {
