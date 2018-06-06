@@ -33,6 +33,7 @@ function oxy_load_child_scripts() {
 */
 function add_meta_boxes_lied_events($post) {
 	add_meta_box( 'meta_box_event_slider', __( 'Revolution Slider', 'lied_events' ), 'build_meta_box_event_slider', 'tribe_events', 'side', 'low' );
+	add_meta_box( 'meta_box_event_slider', __( 'Revolution Slider', 'lied_events' ), 'build_meta_box_event_slider', 'page', 'side', 'low' );
 	add_meta_box( 'meta_box_event_secondary_bar', __( 'Secondary Bar', 'lied_events2' ), 'build_meta_box_secondary_bar', 'tribe_events', 'normal', 'low' );
 }
 
