@@ -83,7 +83,6 @@ do_action( 'tribe_events_single_event_meta_primary_section_start' );
 			<div class="col-md-3 col-sm-3">
 				<a class="tribe-events-ticket" href="<?php ($is_past_event ? esc_html_e('https://ticketweb.lss.ku.edu/Online/default.asp') : esc_html_e( $website )) ?>" target="-blank"><i class="fa fa-ticket fa-lg"></i>&nbsp;<?php ($is_past_event ? esc_html_e('Past Event') : esc_html_e('Buy Tickets Online')) ?></a>
 				<div class="tribe-events-ticket-disclaimer">$5 fee applied to online orders </div>
-				<!--<a class="tribe-events-ticket" href="<?php esc_html_e( $website ) ?>" target="-blank"><i class="fa fa-ticket fa-lg"></i><?php esc_html_e( implode(" ", $cost) ) ?></a> -->
 			</div>
 		</div>
 	</div>

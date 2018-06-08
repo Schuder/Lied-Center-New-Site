@@ -11,6 +11,9 @@
  * @version 1.56.0
  */
 
+$post_type = get_post_type($post->ID);
+$post_slug=$post->post_name;
+
 $add_section = true;
 if ( function_exists('is_woocommerce') ) {
     if ( is_woocommerce() || is_cart() || is_checkout() ) {
@@ -29,12 +32,17 @@ global $post;
 oxy_page_header( $post->ID, array( 'heading_type' => 'page' ) );
 $template_margin = oxy_get_option('template_margin');
 ?>
-<?php putRevSlider('lied-default-banner'); ?>
+
+<?php if ($post_type != 'tribe_events') {
+putRevSlider('lied-default-banner');
+} ?>
+
 <?php if ($add_section === true): ?>
 <section class="section">
     <div class="container">
         <div class="row element-top-<?php echo esc_attr($template_margin); ?> element-bottom-<?php echo esc_attr($template_margin); ?>">
             <div class="col-md-12">
+
 <?php endif; ?>
 <?php
 while( have_posts() ) {

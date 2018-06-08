@@ -216,30 +216,22 @@ function custom_image_sizes( $sizes ) {
     ) );
 }
 
-add_filter('post_gallery','customFormatGallery',10,2);
-
-function customFormatGallery($string,$attr){
-
-    /**$output = "<br />
-              <h3 class=\"tribe-events-title\">
-              <div class=\"tribe-events-title-border\"><i class=\"fa fa-camera\" aria-hidden=\"true\"></i>&nbsp;Photos</div>
-              </h3>
-              <div id=\"container\">";
-    $posts = get_posts(array('include' => $attr['ids'],'post_type' => 'attachment'));
-
-    foreach($posts as $imagePost){
-        $imgurl = wp_get_attachment_url($imagePost->ID);
-        $output .= '<img class=\"event-gallery\" src="'.$imgurl.'"></img>';
-        $output .= wp_get_attachment_image( $imagePost->ID, 'event-gallery');
-    }
-
-    $output .= "</div>";**/
-    
-    /** Make both thumbnail and full size image embed in page, display none on the fullsize and make it so on hover the thumnbnail dissappears and the fullsize appears with transition**/
-
-    return $output;
-    
+/* Webmaster Kerry
+ * Added Code 6/8/2018
+ *
+ * Add Shit to Event Excerpt in Calendar
+ *
+*/
+ 
+function tribe_add_view_event_link_before_excerpt( $excerpt ) {
+     
+     $permalink = get_permalink( get_the_ID() );
+     $ticket_link = tribe_get_event_meta( tribe_get_venue_id( get_the_ID() ), '_VenueURL', true );
+ 
+    return '<a href="'.$ticket_link.'">Buy Tickets</a><br>';
 }
+
+/*add_filter( 'tribe_events_get_the_excerpt', 'tribe_add_view_event_link_before_excerpt' );*/
 
 /**
  * Example override of the blogquote shortcode

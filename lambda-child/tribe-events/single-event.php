@@ -26,6 +26,7 @@ $left_title = get_post_meta($event_id, _left_title, true);
 $left_url = get_post_meta($event_id, _left_url, true);
 $right_title = get_post_meta($event_id, _right_title, true);
 $right_url = get_post_meta($event_id, _right_url, true);
+
 $cost = tribe_get_event_meta( $event_id, '_EventCost', false );
 
 $sponsor = tribe_get_organizer( $event_id);
