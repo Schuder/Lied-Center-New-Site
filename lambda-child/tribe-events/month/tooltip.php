@@ -13,7 +13,7 @@
 	<div id="tribe-events-tooltip-[[=eventId]]" class="tribe-events-tooltip">
 	
 		[[ if(imageTooltipSrc.length) { ]]
-		<div class="tribe-events-event-thumb">
+		<div class="tribe-events-tooltip-thumb">
 			<img src="[[=imageTooltipSrc]]" alt="[[=title]]" />
 		</div>
 		[[ } ]]
@@ -31,6 +31,7 @@
           </div>
         </div>
       </a>
+      <a href="[[=event_link]]" class="tribe-events-tooltip-learnmore">Learn More</a>
 
 		</div>
 	</div>
