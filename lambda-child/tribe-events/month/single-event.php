@@ -28,7 +28,7 @@ $link     = tribe_get_event_link( $post );
 $title    = get_the_title( $post );
 
 $ticket_link = tribe_get_event_meta( tribe_get_venue_id( $post->ID ), '_VenueURL', true );
-$event_link = tribe_get_event_website_url($post->ID);
+$event_link = '/event/'.$post->post_name;
 
 $additional_data = array();
 $additional_data['ticket_link'] = $ticket_link;
