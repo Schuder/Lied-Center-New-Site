@@ -21,6 +21,7 @@ $now->setTime(0,0,0);
 
 $is_past_event = false;
 
+
 $start_day = tribe_get_start_date( null, false, $day_format );
 $start_date = tribe_get_start_date( null, false, $date_format );
 $start_time = tribe_get_start_date( null, false, $time_format );
@@ -47,9 +48,11 @@ $event_id = Tribe__Main::post_id_helper();
 $venue = tribe_get_venue();
 $phone = tribe_get_phone();
 $address = tribe_get_address();
-$website = tribe_get_venue_website_link();
+$website = tribe_get_event_website_url($event_id);
 
 $cost = tribe_get_event_meta( $event_id, '_EventCost', false );
+$is_free_event = get_post_meta($event_id, _is_ticket_enabled, true);
+$ticket_msg = get_post_meta($event_id, _ticket_msg, true);
 
 
 do_action( 'tribe_events_single_meta_before' );
@@ -81,8 +84,26 @@ do_action( 'tribe_events_single_event_meta_primary_section_start' );
 				<span class="tribe-events-venue-directions"><a href="https://goo.gl/maps/w5drNq9mBPs" target="_blank">Get Directions ></a></span>
 			</div>
 			<div class="col-md-3 col-sm-3">
-				<a class="tribe-events-ticket" href="<?php ($is_past_event ? esc_html_e('https://ticketweb.lss.ku.edu/Online/default.asp') : esc_html_e( $website )) ?>" target="-blank"><i class="fa fa-ticket fa-lg"></i>&nbsp;<?php ($is_past_event ? esc_html_e('Past Event') : esc_html_e('Buy Tickets Online')) ?></a>
-				<div class="tribe-events-ticket-disclaimer">$5 fee applied to online orders </div>
+			  
+        <?php if ($is_past_event) { ?>
+        
+          <a class="tribe-events-ticket" href="<?php esc_html_e('https://ticketweb.lss.ku.edu/Online/default.asp') ?>" target="_blank"><i class="fa fa-ticket fa-lg"></i>&nbsp;<?php esc_html_e('Past Event') ?></a>
+        
+        <?php } else { ?>
+        
+          <?php if ($is_free_event=="off") { ?>
+        
+            <a class="tribe-events-ticket" href="<?php esc_html_e( $website ) ?>" target="_blank"><i class="fa fa-ticket fa-lg"></i>&nbsp;<?php esc_html_e('Buy Tickets Online') ?></a>
+            <div class="tribe-events-ticket-disclaimer">$5 fee applied to online orders </div>
+        
+          <?php } else { ?>
+        
+            <a class="tribe-events-ticket" href="<?php esc_html_e( $website ) ?>" target="_blank"><i class="fa fa-ticket fa-lg"></i>&nbsp;<?php esc_html_e($ticket_msg) ?></a>
+        
+          <?php } ?>
+        
+        <?php } ?>
+			
 			</div>
 		</div>
 	</div>

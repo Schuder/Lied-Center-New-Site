@@ -10,20 +10,18 @@
 ?>
 
 <script type="text/html" id="tribe_tmpl_tooltip">
-	<div id="tribe-events-tooltip-[[=eventId]]" class="tribe-events-tooltip">
-	
-		[[ if(imageTooltipSrc.length) { ]]
-		<div class="tribe-events-tooltip-thumb">
-			<img src="[[=imageTooltipSrc]]" alt="[[=title]]" />
-		</div>
-		[[ } ]]
-		
-		<span class="tribe-events-tooltip-title">[[=raw title]]</span>
+<div id="tribe-events-tooltip-[[=eventId]]" class="tribe-events-tooltip">
+  
+  <div class="row">
 
-		<div class="tribe-events-event-body">
-			<div class="tribe-event-duration">
-				<abbr class="tribe-events-abbr tribe-event-date-start">[[=dateDisplay]] </abbr>
-			</div>
+    <div class="col-md-3">
+
+      [[ if(imageTooltipSrc.length) { ]]
+      <div class="tribe-events-tooltip-thumb">
+      	<img src="[[=imageTooltipSrc]]" alt="[[=title]]" />
+      </div>
+      [[ } ]]
+
   		<a href="[[=ticket_link]]">
         <div class="tribe-events-tooltip-flag">
           <div>
@@ -31,10 +29,22 @@
           </div>
         </div>
       </a>
+
+    </div>
+
+    <div class="col-md-9">
+        
+      <span class="tribe-events-tooltip-title">[[=raw title]]</span>
+      <div class="tribe-event-duration">
+      	<abbr class="tribe-events-abbr tribe-event-date-start">[[=dateDisplay]] </abbr>
+      </div>
       <a href="[[=event_link]]" class="tribe-events-tooltip-learnmore">Learn More</a>
 
-		</div>
-	</div>
+    </div>
+
+  </div>
+
+</div>
 </script>
 
 <script type="text/html" id="tribe_tmpl_tooltip_featured">

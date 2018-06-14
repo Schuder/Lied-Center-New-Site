@@ -231,15 +231,13 @@
 
 .tribe-events-tooltip-thumb {
 	overflow: hidden;
-    height: 120px;
-    width: 120px;
+    height: 90px;
     float: left;
     margin-right: 12px;
 }
 
 .tribe-events-tooltip-thumb img {
-    height: 120px;
-    max-width: none;
+    height: 90px;
 }
 
 .tribe-events-tooltip-learnmore {
@@ -332,7 +330,7 @@
   text-align: center;
   display: block;
   transition: all 0.3s ease;
-  font-size: 1.2em;
+  font-size: 1.1em;
   margin-bottom: 4px;
  text-decoration: none !important;
 }

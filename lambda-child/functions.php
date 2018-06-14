@@ -165,67 +165,20 @@ add_action( 'save_post', 'save_meta_boxes_secondary_bar');
  *
 */
 
-function add_ghost_meta_boxes_tribe_events($post) {
+function add_meta_boxes_tribe_events($post) {
 
-  add_meta_box( 'meta_box_tribe_events', __( 'Event Ticket', 'lied_events3' ), 'build_ghost_meta_box_tribe_events', 'tribe_events', 'side', 'low' );
+  add_meta_box( 'meta_box_tribe_events', __( 'Event Ticket', 'lied_events3' ), 'build_meta_box_tribe_events', 'tribe_events', 'side', 'low' );
 
 
 	
 }
 
-function build_ghost_meta_box_tribe_events($post){
+function build_meta_box_tribe_events($post){
 
   wp_nonce_field( basename( __FILE__ ), 'meta_box_nonce_tribe_events' );
   
-	$current_is_ghost_ticket_enabled = get_post_meta( $post->ID, '_is_ghost_ticket_enabled', true );
-	$current_ghost_ticket_msg = get_post_meta( $post->ID, '_ghost_ticket_msg', true );
-	
-	$checked = '';
-	
-	if ($current_is_ghost_ticket_enabled=='on') {
-	  $checked='checked';
-	}
-  
- 	echo "<table id='event_ticket' class='eventtable'><tbody>";
-	echo "<tr><td colspan='2' class='tribe_sectionheader'><h4>Event Ticket</h4></td></tr>";
-	echo "<tr><td class='tribe-table-field-label'>Free Event: </td>";
-	echo "<td><input type='checkbox' name='is_ghost_ticket_enabled' ".$checked."/></td></tr>";
-	echo "<tr><td class='tribe-table-field-label'>Message: </td>";
-	echo "<td><input type='text' name='ghost_ticket_msg'  value='".$current_ghost_ticket_msg."' /></td></tr>";
-	echo "<tr><td></td><td><small>Leave blank to display default 'Get Tickets' text.</small></td></tr>";
-	echo "</tbody></table>";
-	
-	add_action( 'tribe_events_url_table', 'add_meta_boxes_tribe_events');
-
-}
-
-function save_ghost_meta_boxes_tribe_events ($post_id) {
-
-	if ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE ){
-		return;
-	}
-	
-	if ( ! current_user_can( 'edit_post', $post_id ) ){
-		return;
-	}
-	
-	if ( isset( $_REQUEST['is_ghost_ticket_enabled'] ) ) {
-		update_post_meta( $post_id, '_is_ghost_ticket_enabled', 'on' );
-	}
-	else {
-	  update_post_meta( $post_id, '_is_ghost_ticket_enabled', 'off' );
-	}
-	
-	if ( isset( $_REQUEST['ghost_ticket_msg'] ) ) {
-		update_post_meta( $post_id, '_ghost_ticket_msg', sanitize_text_field( $_POST['ghost_ticket_msg'] ) );
-	}
-	
-}
-
-function add_meta_boxes_tribe_events($post){
-  
-	$current_is_ticket_enabled = get_post_meta( $post->ID, '_is_ghost_ticket_enabled', true );
-	$current_ticket_msg = get_post_meta( $post->ID, '_ghost_ticket_msg', true );
+	$current_is_ticket_enabled = get_post_meta( $post->ID, '_is_ticket_enabled', true );
+	$current_ticket_msg = get_post_meta( $post->ID, '_ticket_msg', true );
 	
 	$checked = '';
 	
@@ -234,7 +187,6 @@ function add_meta_boxes_tribe_events($post){
 	}
   
  	echo "<table id='event_ticket' class='eventtable'><tbody>";
-	echo "<tr><td colspan='2' class='tribe_sectionheader'><h4>Event Ticket</h4></td></tr>";
 	echo "<tr><td class='tribe-table-field-label'>Free Event: </td>";
 	echo "<td><input type='checkbox' name='is_ticket_enabled' ".$checked."/></td></tr>";
 	echo "<tr><td class='tribe-table-field-label'>Message: </td>";
@@ -244,10 +196,32 @@ function add_meta_boxes_tribe_events($post){
 
 }
 
+function save_meta_boxes_tribe_events ($post_id) {
+
+	if ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE ){
+		return;
+	}
+	
+	if ( ! current_user_can( 'edit_post', $post_id ) ){
+		return;
+	}
+	
+	if ( isset( $_REQUEST['is_ticket_enabled'] ) ) {
+		update_post_meta( $post_id, '_is_ticket_enabled', 'on' );
+	}
+	else {
+	  update_post_meta( $post_id, '_is_ticket_enabled', 'off' );
+	}
+	
+	if ( isset( $_REQUEST['ticket_msg'] ) ) {
+		update_post_meta( $post_id, '_ticket_msg', sanitize_text_field( $_POST['ticket_msg'] ) );
+	}
+	
+}
 
 
-add_action( 'add_meta_boxes', 'add_ghost_meta_boxes_tribe_events' );
-add_action( 'save_post', 'save_ghost_meta_boxes_tribe_events');
+add_action( 'add_meta_boxes', 'add_meta_boxes_tribe_events' );
+add_action( 'save_post', 'save_meta_boxes_tribe_events');
 
 
 

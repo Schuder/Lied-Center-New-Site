@@ -27,6 +27,8 @@ $left_url = get_post_meta($event_id, _left_url, true);
 $right_title = get_post_meta($event_id, _right_title, true);
 $right_url = get_post_meta($event_id, _right_url, true);
 
+$website = tribe_get_event_website_url($event_id);
+
 $cost = tribe_get_event_meta( $event_id, '_EventCost', false );
 
 $sponsor = tribe_get_organizer( $event_id);
@@ -42,6 +44,9 @@ $now = new DateTime();
 $now->setTime(0,0,0);
 
 $is_past_event = false;
+$is_free_event = get_post_meta($event_id, _is_ticket_enabled, true);
+
+$ticket_msg = get_post_meta($event_id, _ticket_msg, true);
 
 if ($start_datetime < $now) {
 	$is_past_event = true;
@@ -108,23 +113,29 @@ if ($start_datetime < $now) {
 					</div> <!-- #post-x -->
 			</div>
 			<div class="col-md-3 well" >
-
         <?php if ($is_past_event) { ?>
         
-          <!--<h2 class="tribe-events-info-title">Sorry You Missed The Show!</h2>-->
           <div>
-          	<a class="tribe-events-info-ticket event-disabled" href="https://ticketweb.lss.ku.edu/Online/default.asp" target="-blank">See Upcoming Events ></a>
+          	<a class="tribe-events-info-ticket event-disabled" href="https://ticketweb.lss.ku.edu/Online/default.asp" target="_blank">See Upcoming Events ></a>
           </div>
-          
-          
+        
         <?php } else { ?>
         
-          <!--<h2 class="tribe-events-info-title">Coming To The Show?</h2>-->
-          <div>
-			<a class="tribe-events-info-ticket" href="<?php esc_html_e( $website ) ?>" target="-blank">Get Tickets ></a>
-            <div class="tribe-events-cost"><i class="fa fa-ticket fa-lg"></i>&nbsp;<?php esc_html_e( implode(" ", $cost) ) ?></div>
-          </div>
-          
+          <?php if ($is_free_event=="off") { ?>
+        
+            <div>
+              <a class="tribe-events-info-ticket" href="<?php esc_html_e( $website ) ?>" target="_blank">Get Tickets ></a>
+              <div class="tribe-events-cost"><i class="fa fa-ticket fa-lg"></i>&nbsp;<?php esc_html_e( implode(" ", $cost) ) ?></div>
+            </div>
+        
+          <?php } else { ?>
+        
+            <div>
+              <div class="tribe-events-cost"><i class="fa fa-ticket fa-lg"></i>&nbsp;<?php esc_html_e( implode(" ", $cost) ) ?></div>
+            </div>
+        
+          <?php } ?>
+        
         <?php } ?>
 
 				<br />
