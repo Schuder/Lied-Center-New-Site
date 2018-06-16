@@ -14,7 +14,7 @@
   
   <div class="row">
 
-    <div class="col-md-3">
+    <div class="col-md-4">
 
       [[ if(imageTooltipSrc.length) { ]]
       <div class="tribe-events-tooltip-thumb">
@@ -32,7 +32,7 @@
 
     </div>
 
-    <div class="col-md-9">
+    <div class="col-md-8">
         
       <span class="tribe-events-tooltip-title">[[=raw title]]</span>
       <div class="tribe-event-duration">
