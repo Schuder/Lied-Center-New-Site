@@ -17,6 +17,16 @@
 	height: 100px;
 }
 
+#tribe-events #legend li {
+	width: 13.7%;
+	padding: 12px !important;
+	margin-left: 2px !important;
+}
+
+#tribe-events #legend {
+	padding: 0px !important;
+}
+
 
 .tribe-events-content p {
 	word-wrap: break-word;
