@@ -25,6 +25,7 @@
 
 #tribe-events #legend {
 	padding: 0px !important;
+	font-size: 1.1em;
 }
 
 
@@ -221,7 +222,7 @@
     border-left: 15px solid #b92926;
     border-bottom: 15px solid #b92926;
     color: white;
-    margin-top: 12px;
+    margin-top: 6px;
     font-size: 0.9em;
 }
 
@@ -247,18 +248,13 @@
 
 .tribe-events-tooltip-learnmore {
     display: inline-block;
-    text-align: center;
-    background-color: #636363;
-    color: #fff;
-    padding: 4px 10px;
+    color: #4c4c4c !important;
     -webkit-border-radius: 3px;
     border-radius: 3px;
     transition: all 0.3s ease;
     font-weight: bold;
 	 text-decoration: none !important;
-	 
     margin: 0px;
-    width: 180px;
 }
 
 .tribe-events-tooltip-title {
@@ -272,8 +268,8 @@
 }
 
 .tribe-event-duration {
-  margin-top: 6px;
-  margin-bottom: 6px;
+  margin-top: 4px;
+  margin-bottom: 4px;
 }
 
 .tribe-events-day {

@@ -92,12 +92,12 @@ do_action( 'tribe_events_single_event_meta_primary_section_start' );
         <?php } else { ?>
         
           <?php if ($is_free_event=="off") { ?>
-        
-            <a class="tribe-events-ticket" href="<?php esc_html_e( $website ) ?>" target="_blank"><i class="fa fa-ticket fa-lg"></i>&nbsp;<?php esc_html_e('Buy Tickets Online') ?></a>
+              <?php   $ticket_msg = ( empty($ticket_msg) ? "Buy Tickets Online" : $ticket_msg);   ?>
+            <a class="tribe-events-ticket" href="<?php esc_html_e( $website ) ?>" target="_blank"><i class="fa fa-ticket fa-lg"></i>&nbsp;<?php esc_html_e($ticket_msg) ?></a>
             <div class="tribe-events-ticket-disclaimer">$5 fee applied to online orders </div>
         
           <?php } else { ?>
-        
+              <?php   $ticket_msg = ( empty($ticket_msg) ? "Free and open to the public" : $ticket_msg);   ?>
             <a class="tribe-events-ticket" href="<?php esc_html_e( $website ) ?>" target="_blank"><i class="fa fa-ticket fa-lg"></i>&nbsp;<?php esc_html_e($ticket_msg) ?></a>
         
           <?php } ?>

@@ -22,6 +22,7 @@
       </div>
       [[ } ]]
 
+      [[ if(is_free_event=="off") { ]]
   		<a href="[[=ticket_link]]">
         <div class="tribe-events-tooltip-flag">
           <div>
@@ -29,6 +30,7 @@
           </div>
         </div>
       </a>
+      [[ } ]]
 
     </div>
 
@@ -36,7 +38,7 @@
         
       <span class="tribe-events-tooltip-title">[[=raw title]]</span>
       <div class="tribe-event-duration">
-      	<abbr class="tribe-events-abbr tribe-event-date-start">[[=dateDisplay]] </abbr>
+      	<abbr class="tribe-events-abbr tribe-event-date-start">[[=event_date]] </abbr>
       </div>
       <a href="[[=event_link]]" class="tribe-events-tooltip-learnmore">Learn More</a>
 

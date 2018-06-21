@@ -191,7 +191,7 @@ function build_meta_box_tribe_events($post){
 	echo "<td><input type='checkbox' name='is_ticket_enabled' ".$checked."/></td></tr>";
 	echo "<tr><td class='tribe-table-field-label'>Message: </td>";
 	echo "<td><input type='text' name='ticket_msg'  value='".$current_ticket_msg."' /></td></tr>";
-	echo "<tr><td></td><td><small>Leave blank to display default 'Get Tickets' text.</small></td></tr>";
+	echo "<tr><td></td><td><small>Leave blank to display a default message.</small></td></tr>";
 	echo "</tbody></table>";
 
 }
@@ -284,23 +284,6 @@ function custom_image_sizes( $sizes ) {
         'event-gallery' => __( 'Event Gallery' ),
     ) );
 }
-
-/* Webmaster Kerry
- * Added Code 6/8/2018
- *
- * Add Shit to Event Excerpt in Calendar
- *
-*/
- 
-function tribe_add_view_event_link_before_excerpt( $excerpt ) {
-     
-     $permalink = get_permalink( get_the_ID() );
-     $ticket_link = tribe_get_event_meta( tribe_get_venue_id( get_the_ID() ), '_VenueURL', true );
- 
-    return '<a href="'.$ticket_link.'">Buy Tickets</a><br>';
-}
-
-/*add_filter( 'tribe_events_get_the_excerpt', 'tribe_add_view_event_link_before_excerpt' );*/
 
 /**
  * Example override of the blogquote shortcode

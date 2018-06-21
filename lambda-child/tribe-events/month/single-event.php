@@ -27,12 +27,16 @@ $event_id = "{$post->ID}-{$day['daynum']}";
 $link     = tribe_get_event_link( $post );
 $title    = get_the_title( $post );
 
-$ticket_link = tribe_get_event_meta( tribe_get_venue_id( $post->ID ), '_VenueURL', true );
+$ticket_link = tribe_get_event_website_url($event_id);
+$is_free_event = tribe_get_event_meta( $post->ID , '_is_ticket_enabled', true );
 $event_link = '/event/'.$post->post_name;
+$event_date = tribe_get_start_date($post->ID, true, "M d @ g:ia");
 
 $additional_data = array();
 $additional_data['ticket_link'] = $ticket_link;
+$additional_data['is_free_event'] = $is_free_event;
 $additional_data['event_link'] = $event_link;
+$additional_data['event_date'] = $event_date;
 
 /**
  * How to Use the Javascript Templating System in this View
