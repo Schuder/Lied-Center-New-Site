@@ -5,6 +5,20 @@
 	padding: 0px 80px;
 }
 
+#tribe-events-bar {
+  display: none;
+}
+
+.tribe-events-page-title {
+  text-align: left !important;
+}
+
+.tribe-events-calendar thead th {
+  border-color: #d2d2d2 !important;
+  background-color: #b2b2b2 !important;
+  padding: 0px !important;
+}
+
 #tribe-events-content {
 	margin-top: 35px !important;
 }
