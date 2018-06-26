@@ -28,7 +28,15 @@ if ( ! defined( 'ABSPATH' ) ) {
 	</div>
 	<!-- #tribe-events-header -->
 	<?php do_action( 'tribe_events_after_header' ) ?>
-
+	<div class="tribe-events-nav">
+  	<span >
+      <?php tribe_events_the_previous_month_link(); ?>
+    </span>
+    
+    <span>
+      <?php tribe_events_the_next_month_link(); ?>
+    </span>
+  </div>
 	<!-- Month Grid -->
 	<?php tribe_get_template_part( 'month/loop', 'grid' ) ?>
 
