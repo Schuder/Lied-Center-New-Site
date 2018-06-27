@@ -55,8 +55,12 @@
   font-weight: bold;
 }
 
-#tribe-events #legend li span:hover {
+#tribe-events #legend li:hover span {
   text-decoration: underline;
+}
+
+#tribe-events #legend li span:focus {
+  background: black;
 }
 
 #tribe-events #legend li {
@@ -67,17 +71,8 @@
 	cursor: pointer;
 }
 
-#tribe-events #legend .tribe-events-category-all {
-  border: 1px solid black;
-}
-
-#tribe-events #legend .tribe-events-category-all span {
-  color: white;
-}
-
-#tribe-events #legend .tribe-events-category-all span:after {
-  content: 'Remove Filter';
-  color: black;
+#tribe-events #legend .tribe-events-category-other {
+  display: none;
 }
 
 #tribe-events #legend {

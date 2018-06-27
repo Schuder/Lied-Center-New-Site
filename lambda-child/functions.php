@@ -169,8 +169,6 @@ function add_meta_boxes_tribe_events($post) {
 
   add_meta_box( 'meta_box_tribe_events', __( 'Event Ticket', 'lied_events3' ), 'build_meta_box_tribe_events', 'tribe_events', 'side', 'low' );
 
-
-	
 }
 
 function build_meta_box_tribe_events($post){
@@ -356,6 +354,19 @@ function custom_image_sizes( $sizes ) {
         'event-gallery' => __( 'Event Gallery' ),
     ) );
 }
+
+
+function teccc_change_html ($html) {
+$html = 'HTML string';
+$dom = new DOMDocument();
+$dom->loadHTML($html);
+  
+echo gettype($html).$html;
+}
+
+add_filter( 'teccc_legend_html', 'teccc_change_html');
+
+
 
 /**
  * Example override of the blogquote shortcode
