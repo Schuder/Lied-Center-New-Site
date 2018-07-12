@@ -12,6 +12,7 @@
 if ( ! defined( 'ABSPATH' ) ) {
 	die( '-1' );
 }
+
 putRevSlider('lied-default-banner');
 do_action( 'tribe_events_before_template' );
 

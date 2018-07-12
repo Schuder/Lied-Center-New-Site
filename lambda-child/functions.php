@@ -18,6 +18,12 @@
  * @author
  **/
  
+function enqueue_script() {
+  wp_enqueue_script( 'tribe-calendar', '/wp-content/themes/lambda-child/scripts/tribe-calendar.js', array('jquery'), null, true );
+}
+
+add_action( 'wp_enqueue_scripts', 'enqueue_script' );
+ 
 remove_filter( 'the_content', 'wpautop' );
 remove_filter( 'the_excerpt', 'wpautop' );
 
@@ -357,14 +363,20 @@ function custom_image_sizes( $sizes ) {
 
 
 function teccc_change_html ($html) {
-$html = 'HTML string';
 $dom = new DOMDocument();
 $dom->loadHTML($html);
-  
-echo gettype($html).$html;
+$dom_string = $dom->saveHTML();
+$legend = $dom->getElementById('legend');
+$filters = $legend->getElementsByTagName('li');
+
+foreach($filters as $li) {
+  $li->setAttribute('onclick','filterSelect(this)');
 }
 
-add_filter( 'teccc_legend_html', 'teccc_change_html');
+echo $dom->saveHTML();
+}
+
+/* add_filter( 'teccc_legend_html', 'teccc_change_html');*/
 
 
 

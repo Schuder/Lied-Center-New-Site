@@ -59,8 +59,8 @@
   text-decoration: underline;
 }
 
-#tribe-events #legend li span:focus {
-  background: black;
+#tribe-events #legend li.filtered span:before {
+  content: '►';
 }
 
 #tribe-events #legend li {
@@ -69,6 +69,7 @@
 	text-align: center;
 	width: 125px;
 	cursor: pointer;
+	border: none;
 }
 
 #tribe-events #legend .tribe-events-category-other {
@@ -87,6 +88,10 @@
   margin-left: 32px;
   margin-right: 20px;
 
+}
+
+.tribe-events-month-event-title {
+  text-transform: none !important;
 }
 
 .tribe-events-content p {
