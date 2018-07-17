@@ -37,6 +37,7 @@ function oxy_load_child_scripts() {
  * Adds a Revolution Slider picker to the back-end event editor
  *
 */
+
 function add_meta_boxes_lied_events($post) {
 	add_meta_box( 'meta_box_event_slider', __( 'Revolution Slider', 'lied_events' ), 'build_meta_box_event_slider', 'tribe_events', 'side', 'low' );
 	add_meta_box( 'meta_box_event_slider', __( 'Revolution Slider', 'lied_events' ), 'build_meta_box_event_slider', 'page', 'side', 'low' );
