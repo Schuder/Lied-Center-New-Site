@@ -31,6 +31,15 @@ function oxy_load_child_scripts() {
     wp_enqueue_style( THEME_SHORT . '-child-theme' , get_stylesheet_directory_uri() . '/style.css', array( THEME_SHORT . '-theme' ), false, 'all' );
 }
 
+
+function prefix_limit_post_types_in_search( $query ) {
+    if ( $query->is_search ) {
+        $query->set( 'post_type', array( 'tribe_events' ) );
+    }
+    return $query;
+}
+add_filter( 'pre_get_posts', 'prefix_limit_post_types_in_search' );
+
 /* Webmaster Kerry
  * Added Code 1/26/2018
  *
